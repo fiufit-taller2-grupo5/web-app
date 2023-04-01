@@ -7,6 +7,6 @@ To get started, you will need to install the following:
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Running the App
-To run the app, you will need to run the following commands in the /Fiufit-mobile folder:
+To run the app, you will need to run the following commands in the /web-app folder:
 - `yarn`
 - `yarn dev`
