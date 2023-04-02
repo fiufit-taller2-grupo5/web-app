@@ -12,7 +12,7 @@ RUN yarn --pure-lockfile
 
 COPY . .
 # Expose the default Vite development server port
-EXPOSE 5173
+EXPOSE 3000
 
 # Start the development server
 CMD ["yarn", "dev" , "--host",  "0.0.0.0"]
