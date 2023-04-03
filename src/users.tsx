@@ -5,13 +5,7 @@ export const UserList = () => (
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="username" />
             <EmailField source="email" />
-            <TextField source="phone" />
         </Datagrid>
     </List>
-);
-
-export const PostEdit = () => (
-   <Edit title={"<PostTitle />"}> </Edit>
 );
