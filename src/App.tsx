@@ -1,4 +1,4 @@
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { Admin, Resource, ListGuesser, useAuthProvider } from 'react-admin';
 import { Dashboard } from './dashboard';
 import jsonServerProvider from 'ra-data-json-server';
 import { UserList } from './users';
@@ -8,16 +8,39 @@ import React from 'react';
 import axios from 'axios';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { FirebaseAuthProvider } from 'react-admin-firebase';
-import { FirebaseDataProvider } from 'react-admin-firebase';
 import { config } from './firebaseConfig';
 import { LoginPage } from './loginPage';
 import pink from '@mui/material/colors/pink';
-import { defaultTheme } from 'react-admin';
+import { defaultTheme, fetchUtils } from 'react-admin';
 import { AdminCreate } from './admins';
 
-const authProvider = FirebaseAuthProvider(config, {});
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-//const dataProvider = FirebaseDataProvider(config, {});
+// All options are optional
+const options = {
+  logging: true,
+  persistence: 'local' as const,
+};
+
+const authProvider = FirebaseAuthProvider(config, options);
+
+const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
+  const tokenKey = `firebase:authUser:${config.apiKey}:[DEFAULT]`;
+  const token = JSON.parse(localStorage.getItem(tokenKey) as string);
+  const customHeaders = (options.headers ||
+    new Headers({
+      Accept: 'application/json',
+    })) as Headers;
+  customHeaders.set(
+    'Authorization',
+    `Bearer ${token.stsTokenManager.accessToken}`
+  );
+  options.headers = customHeaders;
+  return fetchUtils.fetchJson(url, options);
+};
+
+const dataProvider = jsonServerProvider(
+  'https://jsonplaceholder.typicode.com',
+  fetchJson
+);
 
 const theme = {
   ...defaultTheme,
@@ -34,7 +57,8 @@ const App = () => {
     axios.get('/training-service/health').then((res) => {
       console.log(res);
     });
-  });
+  }, []);
+
   return (
     <Admin
       loginPage={LoginPage}
