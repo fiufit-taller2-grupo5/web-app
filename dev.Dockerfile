@@ -1,18 +1,20 @@
 # Use the official Node.js image as the base image
-FROM node:18.13.0-alpine
+FROM node:14.16.0-alpine
 
 # Set the working directory
 WORKDIR /app
 
+ENV PATH /app/node_modules/.bin:$PATH
+
 COPY package.json ./
-COPY yarn.lock ./
 
 # Install the dependencies
-RUN yarn --pure-lockfile
+RUN npm i --verbose --unsafe-perm
 
 COPY . .
 # Expose the default Vite development server port
 EXPOSE 3000
 
 # Start the development server
-CMD ["yarn", "dev" , "--host",  "0.0.0.0"]
+CMD ["npm", "run", "dev"]
+#CMD ["yarn", "dev" , "--host",  "0.0.0.0"]
