@@ -3,6 +3,7 @@ import { Dashboard } from './dashboard';
 import jsonServerProvider from 'ra-data-json-server';
 import { UserList } from './users';
 import { AdminList } from './admins';
+import { PageLayout } from './layout';
 import UserIcon from '@mui/icons-material/Group';
 import React from 'react';
 import axios from 'axios';
@@ -61,11 +62,12 @@ const App = () => {
 
   return (
     <Admin
-      loginPage={LoginPage}
-      theme={theme}
       authProvider={authProvider}
       dataProvider={dataProvider}
+      loginPage={LoginPage}
+      layout={PageLayout}
       dashboard={Dashboard}
+      theme={theme}
     >
       <Resource
         name="admins"
