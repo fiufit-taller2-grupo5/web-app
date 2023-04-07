@@ -1,5 +1,4 @@
-import { Card, CardContent, CardHeader, Button } from '@mui/material';
-import { CreateButton, TopToolbar, useAuthProvider } from 'react-admin';
+import { Card, CardContent, CardHeader } from '@mui/material';
 import React from 'react';
 
 export const Dashboard = () => {
