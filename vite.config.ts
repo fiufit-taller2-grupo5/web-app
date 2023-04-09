@@ -9,10 +9,10 @@ export default defineConfig({
     strictPort: true,
     port: 3000,
     proxy: {
-      '/training-service': {
-        target: 'http://training-service:3000',
+      '/api': {
+        target: 'http://api-gateway:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/training-service/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
