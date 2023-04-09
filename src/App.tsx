@@ -16,7 +16,6 @@ import { AdminCreate } from './admins';
 import { mainTheme } from './themes';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
-import spanishMessages from '@blackbox-vision/ra-language-spanish';
 
 // All options are optional
 const options = {
@@ -37,6 +36,7 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
     'Authorization',
     `Bearer ${token.stsTokenManager.accessToken}`
   );
+  console.log(token.stsTokenManager.accessToken)
   options.headers = customHeaders;
   return fetchUtils.fetchJson(url, options);
 };
@@ -47,7 +47,7 @@ const dataProvider = jsonServerProvider(
 );
 
 const i18nProvider = polyglotI18nProvider(
-  (locale) => (locale === 'es' ? spanishMessages : englishMessages),
+  (locale) => (englishMessages),
   'en', // Default locale
   [
     { locale: 'en', name: 'English' },

@@ -9,7 +9,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 
 # Install the dependencies
-RUN npm i --verbose --unsafe-perm
+RUN npm i --verbose --unsafe-perm 
 
 COPY . .
 # Expose the default Vite development server port
