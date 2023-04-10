@@ -1,7 +1,7 @@
 import { Admin, Resource } from 'react-admin';
 import { Dashboard } from './dashboard';
 import jsonServerProvider from 'ra-data-json-server';
-import { UserList } from './users';
+import { UserCreate, UserList } from './users';
 import { AdminList } from './admins';
 import { PageLayout } from './layout';
 import UserIcon from '@mui/icons-material/Group';
@@ -17,6 +17,8 @@ import { mainTheme } from './themes';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
 import spanishMessages from '@blackbox-vision/ra-language-spanish';
+import { myDataProvider } from './dataProvider';
+import { PostCreate, PostList } from './posts';
 
 // All options are optional
 const options = {
@@ -42,7 +44,10 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider('http://api-gateway/api', fetchJson);
+const dataProvider = jsonServerProvider(
+  'https://api-gateway-prod-szwtomas.cloud.okteto.net/user-service/api',
+  fetchJson
+);
 
 const i18nProvider = polyglotI18nProvider(
   (locale) => (locale === 'es' ? spanishMessages : englishMessages),
@@ -54,19 +59,24 @@ const i18nProvider = polyglotI18nProvider(
 );
 
 const App = () => {
-  React.useEffect(() => {
-    axios.get('/api-gateway/health-check').then((res) => {
-      console.log('health check:', res);
-    });
+  /*React.useEffect(() => {
     axios
-      .post('api-gateway/api/users?name=maria&email=maria@mail.com')
+      .get('/api-gateway/health-check', {
+        headers: {
+          idToken: token.stsTokenManager.accessToken, //the token is a variable which holds the token
+        },
+      })
       .then((res) => {
-        console.log('usuarios:', res);
+        console.log('health check:', res);
       });
-    axios.get('api-gateway/api/users').then((res) => {
-      console.log('usuarios obtenidos:', res);
-    });
-  }, []);
+    axios
+      .get(
+        'https://api-gateway-prod-szwtomas.cloud.okteto.net/user-service/api/users'
+      )
+      .then((res) => {
+        console.log('usuarios obtenidos:', res);
+      });
+  }, []);*/
 
   return (
     <Admin
