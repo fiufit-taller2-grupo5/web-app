@@ -36,18 +36,15 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
     'Authorization',
     `Bearer ${token.stsTokenManager.accessToken}`
   );
-  console.log(token.stsTokenManager.accessToken)
+  console.log(token.stsTokenManager.accessToken);
   options.headers = customHeaders;
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider(
-  'https://jsonplaceholder.typicode.com',
-  fetchJson
-);
+const dataProvider = jsonServerProvider('http://api-gateway/api', fetchJson);
 
 const i18nProvider = polyglotI18nProvider(
-  (locale) => (englishMessages),
+  (locale) => englishMessages,
   'en', // Default locale
   [
     { locale: 'en', name: 'English' },
@@ -57,8 +54,16 @@ const i18nProvider = polyglotI18nProvider(
 
 const App = () => {
   React.useEffect(() => {
-    axios.get('/training-service/health').then((res) => {
-      console.log(res);
+    axios.get('/api-gateway/health-check').then((res) => {
+      console.log('health check:', res);
+    });
+    axios
+      .post('api-gateway/api/users?name=maria&email=maria@mail.com')
+      .then((res) => {
+        console.log('usuarios:', res);
+      });
+    axios.get('api-gateway/api/users').then((res) => {
+      console.log('usuarios obtenidos:', res);
     });
   }, []);
 
