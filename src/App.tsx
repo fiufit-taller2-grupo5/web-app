@@ -16,6 +16,7 @@ import { AdminCreate } from './admins';
 import { mainTheme } from './themes';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
+import spanishMessages from '@blackbox-vision/ra-language-spanish';
 
 // All options are optional
 const options = {
@@ -44,7 +45,7 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
 const dataProvider = jsonServerProvider('http://api-gateway/api', fetchJson);
 
 const i18nProvider = polyglotI18nProvider(
-  (locale) => englishMessages,
+  (locale) => (locale === 'es' ? spanishMessages : englishMessages),
   'en', // Default locale
   [
     { locale: 'en', name: 'English' },
