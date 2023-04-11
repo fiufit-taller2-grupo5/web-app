@@ -8,12 +8,5 @@ export default defineConfig({
     host: true, // Here
     strictPort: true,
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://api-gateway:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
   },
 });

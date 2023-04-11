@@ -19,6 +19,7 @@ import englishMessages from 'ra-language-english';
 import spanishMessages from '@blackbox-vision/ra-language-spanish';
 import { myDataProvider } from './dataProvider';
 import { PostCreate, PostList } from './posts';
+import { API_URL} from "../config";
 
 // All options are optional
 const options = {
@@ -45,8 +46,8 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
 };
 
 const dataProvider = jsonServerProvider(
-  'https://api-gateway-prod-szwtomas.cloud.okteto.net/user-service/api',
-  fetchJson
+  API_URL,
+ fetchJson
 );
 
 const i18nProvider = polyglotI18nProvider(
