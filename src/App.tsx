@@ -60,24 +60,6 @@ const i18nProvider = polyglotI18nProvider(
 );
 
 const App = () => {
-  /*React.useEffect(() => {
-    axios
-      .get('/api-gateway/health-check', {
-        headers: {
-          idToken: token.stsTokenManager.accessToken, //the token is a variable which holds the token
-        },
-      })
-      .then((res) => {
-        console.log('health check:', res);
-      });
-    axios
-      .get(
-        'https://api-gateway-prod-szwtomas.cloud.okteto.net/user-service/api/users'
-      )
-      .then((res) => {
-        console.log('usuarios obtenidos:', res);
-      });
-  }, []);*/
 
   return (
     <Admin
