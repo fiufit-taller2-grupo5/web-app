@@ -13,7 +13,7 @@ RUN npm i --verbose --unsafe-perm
 
 COPY . .
 # Expose the default Vite development server port
-EXPOSE 3000
+EXPOSE 80
 
 # Start the development server
 CMD ["npm", "run", "dev"]
