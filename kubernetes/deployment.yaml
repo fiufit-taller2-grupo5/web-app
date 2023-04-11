@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Name of the deployment
+  name: admin-dashboard-deployment
+  # Labels are key-value pair assigned in this case to the deployment
+  # The key can be whatever I want, in this case, I called it app to reference it in the future
+  labels:
+    # Reffering to admin-dashboard app
+    app: admin-dashboard
+# Specification for the deployment
+spec:
+  # kubernetes will do whatever it can to ensure having always exactly 1 pod running
+  replicas: 1
+  selector:
+    # This means it will select the pods which its label matches exactly with "app: admin-dashboard"
+    matchLabels:
+      app: admin-dashboard
+  template:
+    metadata:
+      # This indicates the pods created by the deployment will have app: admin-dashboard as a label
+      labels:
+        app: admin-dashboard
+    spec:
+      containers:
+        - name: admin-dashboard
+          image: registry.cloud.okteto.net/prod-szwtomas/admin-dashboard:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      # This means that, if the container exits for any reason, it should restart again. It is the default value
+      # Other options are OnFailure y Never
+      restartPolicy: Always

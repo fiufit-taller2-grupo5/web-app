@@ -1,7 +1,7 @@
 import { Admin, Resource } from 'react-admin';
 import { Dashboard } from './dashboard';
 import jsonServerProvider from 'ra-data-json-server';
-import { UserCreate, UserList } from './users';
+import { UserList } from './users';
 import { AdminList } from './admins';
 import { PageLayout } from './layout';
 import UserIcon from '@mui/icons-material/Group';
@@ -17,8 +17,6 @@ import { mainTheme } from './themes';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
 import spanishMessages from '@blackbox-vision/ra-language-spanish';
-import { myDataProvider } from './dataProvider';
-import { PostCreate, PostList } from './posts';
 import { API_URL} from "../config";
 
 // All options are optional
