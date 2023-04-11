@@ -23,4 +23,4 @@ spec:
       # The traffic is then directed to the Pod's targetPort,
       targetPort: 80 # The port exposed in the admin-dashboard pod's containers
       # nodePort is the port exposed EXTERNALLY. It maps to the deployment port (80), and then to the port exposed by the pods (7878)
-      nodePort: 30001
+      nodePort: 30003
