@@ -23,4 +23,4 @@ jobs:
         uses: ./.github/actions
         with:
           tag: okteto.dev/admin-dashboard:latest
-          file: Dockerfile
+          file: dev.Dockerfile
