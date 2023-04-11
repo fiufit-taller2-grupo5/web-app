@@ -22,5 +22,5 @@ jobs:
       - name: Build image and deploy 
         uses: ./.github/actions
         with:
-          tag: okteto.dev/admin-dashboard:2
-          file: dev.Dockerfile
+          tag: okteto.dev/admin-dashboard:3
+          file: prod.Dockerfile

@@ -12,9 +12,9 @@ COPY package.json ./
 RUN npm i --verbose --unsafe-perm 
 
 COPY . .
+
 # Expose the default Vite development server port
 EXPOSE 80
 
-# Start the development server
-CMD ["npm", "run", "dev"]
-#CMD ["yarn", "dev" , "--host",  "0.0.0.0"]
+# Start the development server with NODE_ENV=production
+CMD ["sh", "-c", "NODE_ENV=production npm run dev"]
