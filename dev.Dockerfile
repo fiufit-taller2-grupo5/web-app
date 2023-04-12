@@ -17,4 +17,3 @@ EXPOSE 80
 
 # Start the development server
 CMD ["npm", "run", "dev"]
-#CMD ["yarn", "dev" , "--host",  "0.0.0.0"]
