@@ -23,11 +23,11 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.tag }}
-    - ${{ inputs.file }}
-    - ${{ inputs.path }}
-    - ${{ inputs.buildargs }}
-    - ${{ inputs.global }}
+     - ${{ inputs.tag }}
+     - ${{ inputs.file }}
+     - ${{ inputs.sha }}
+     - ${{ inputs.okteto_yml }}
+     - ${{ inputs.k8s_deployment_file }}
 branding:
   color: 'green'
   icon: 'layers'

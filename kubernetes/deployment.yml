@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: admin-dashboard
-          image: registry.cloud.okteto.net/prod-szwtomas/admin-dashboard:3
+          image: registry.cloud.okteto.net/prod-szwtomas/admin-dashboard:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
