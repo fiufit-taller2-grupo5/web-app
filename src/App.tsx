@@ -5,8 +5,6 @@ import { UserList } from './users';
 import { AdminList } from './admins';
 import { PageLayout } from './layout';
 import UserIcon from '@mui/icons-material/Group';
-import React from 'react';
-import axios from 'axios';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { FirebaseAuthProvider } from 'react-admin-firebase';
 import { config } from './firebaseConfig';
@@ -14,10 +12,7 @@ import { LoginPage } from './loginPage';
 import { fetchUtils } from 'react-admin';
 import { AdminCreate } from './admins';
 import { mainTheme } from './themes';
-import polyglotI18nProvider from 'ra-i18n-polyglot';
-import englishMessages from 'ra-language-english';
-import spanishMessages from '@blackbox-vision/ra-language-spanish';
-import { API_URL} from "../config";
+import { API_URL } from '../config';
 
 // All options are optional
 const options = {
@@ -43,22 +38,9 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider(
-  API_URL,
- fetchJson
-);
-
-const i18nProvider = polyglotI18nProvider(
-  (locale) => (locale === 'es' ? spanishMessages : englishMessages),
-  'en', // Default locale
-  [
-    { locale: 'en', name: 'English' },
-    { locale: 'es', name: 'Spanish' },
-  ]
-);
+const dataProvider = jsonServerProvider(API_URL, fetchJson);
 
 const App = () => {
-
   return (
     <Admin
       authProvider={authProvider}
@@ -67,7 +49,6 @@ const App = () => {
       layout={PageLayout}
       dashboard={Dashboard}
       theme={mainTheme}
-      i18nProvider={i18nProvider}
     >
       <Resource
         name="admins"

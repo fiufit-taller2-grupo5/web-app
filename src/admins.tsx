@@ -8,6 +8,7 @@ import {
   List,
   TextField,
 } from 'react-admin';
+import { PostPagination } from './pagination';
 
 export const AdminCreate = () => (
   <Create>
@@ -20,7 +21,7 @@ export const AdminCreate = () => (
 );
 
 export const AdminList = () => (
-  <List>
+  <List perPage={5} pagination={<PostPagination />}>
     <Datagrid rowClick="edit">
       <EmailField source="email" />
       <TextField source="name" />

@@ -4,15 +4,12 @@ import {
   EmailField,
   ImageField,
   List,
-  Pagination,
   TextField,
 } from 'react-admin';
+import { PostPagination } from './pagination';
 
 export const UserList = () => (
-  <List
-    perPage={5}
-    pagination={<Pagination rowsPerPageOptions={[5, 10, 20, 30]} />}
-  >
+  <List perPage={5} pagination={<PostPagination />}>
     <Datagrid>
       <TextField source="id" />
       <ImageField source="avatar" sx={{ my: -2 }} />
