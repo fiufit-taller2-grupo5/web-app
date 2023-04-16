@@ -3,9 +3,11 @@ import { Dashboard } from './dashboard';
 import jsonServerProvider from 'ra-data-json-server';
 import { UserList } from './users';
 import { AdminList } from './admins';
+import { TrainingList } from './trainings';
 import { PageLayout } from './layout';
 import UserIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { FirebaseAuthProvider } from 'react-admin-firebase';
 import { config } from './firebaseConfig';
 import { LoginPage } from './loginPage';
@@ -57,6 +59,7 @@ const App = () => {
         create={AdminCreate}
       />
       <Resource name="users" list={UserList} icon={UserIcon} />
+      <Resource name="trainings" list={TrainingList} icon={FitnessCenterIcon} />
     </Admin>
   );
 };
