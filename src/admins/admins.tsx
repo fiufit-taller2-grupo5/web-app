@@ -7,8 +7,19 @@ import {
   EmailField,
   List,
   TextField,
+  SimpleShowLayout,
+  Show,
 } from 'react-admin';
-import { PostPagination } from './pagination';
+import { PostPagination } from '../utilities/pagination';
+import { ShowButton } from 'react-admin';
+
+export const AdminShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="name" />
+    </SimpleShowLayout>
+  </Show>
+);
 
 export const AdminCreate = () => (
   <Create>
@@ -25,6 +36,7 @@ export const AdminList = () => (
     <Datagrid rowClick="edit">
       <EmailField source="email" />
       <TextField source="name" />
+      <ShowButton />
     </Datagrid>
   </List>
 );

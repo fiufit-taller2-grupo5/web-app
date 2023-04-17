@@ -6,7 +6,7 @@ import {
   Menu,
   LayoutProps,
 } from 'react-admin';
-import { darkTheme, mainTheme } from './themes';
+import { darkTheme, mainTheme } from '../utilities/themes';
 import Box from '@mui/material/Box';
 
 const AppBarAux = () => (

@@ -6,7 +6,7 @@ import {
   List,
   TextField,
 } from 'react-admin';
-import { PostPagination } from './pagination';
+import { PostPagination } from '../utilities/pagination';
 
 export const UserList = () => (
   <List perPage={5} pagination={<PostPagination />}>

@@ -1,20 +1,22 @@
 import { Admin, Resource } from 'react-admin';
-import { Dashboard } from './dashboard';
+import { Dashboard } from './dashboard/dashboard';
 import jsonServerProvider from 'ra-data-json-server';
-import { UserList } from './users';
-import { AdminList } from './admins';
-import { TrainingList } from './trainings';
-import { PageLayout } from './layout';
+import { UserList } from './users/users';
+import { AdminList } from './admins/admins';
+import { TrainingList } from './trainings/trainings';
+import { PageLayout } from './menuItems/layout';
 import UserIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { FirebaseAuthProvider } from 'react-admin-firebase';
-import { config } from './firebaseConfig';
-import { LoginPage } from './loginPage';
+import { config } from './login/firebaseConfig';
+import { LoginPage } from './login/loginPage';
 import { fetchUtils } from 'react-admin';
-import { AdminCreate } from './admins';
-import { mainTheme } from './themes';
+import { AdminCreate } from './admins/admins';
+import { mainTheme } from './utilities/themes';
 import { API_URL } from '../config';
+import { AdminShow } from './admins/admins';
+import { TrainingShow } from './trainings/trainings';
 
 // All options are optional
 const options = {
@@ -57,9 +59,15 @@ const App = () => {
         list={AdminList}
         icon={AdminPanelSettingsIcon}
         create={AdminCreate}
+        show={AdminShow}
       />
       <Resource name="users" list={UserList} icon={UserIcon} />
-      <Resource name="trainings" list={TrainingList} icon={FitnessCenterIcon} />
+      <Resource
+        name="trainings"
+        list={TrainingList}
+        icon={FitnessCenterIcon}
+        show={TrainingShow}
+      />
     </Admin>
   );
 };
