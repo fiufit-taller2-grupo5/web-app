@@ -6,9 +6,11 @@ export const mainTheme = {
   ...defaultTheme,
   palette: {
     primary: {
-      main: '#FF5252',
+      main: pink[600],
     },
-    secondary: pink,
+    secondary: {
+      main: '#d81b60',
+    },
   },
 };
 
