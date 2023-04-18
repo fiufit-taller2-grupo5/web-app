@@ -11,7 +11,7 @@ import { PostPagination } from '../utilities/pagination';
 
 const postFilters = [
   <TextInput label="Name" source="name" alwaysOn />,
-  <TextInput label="Description" source="description" />,
+  <TextInput label="Difficulty" source="difficulty" />,
 ];
 
 export const TrainingShow = () => (
@@ -28,8 +28,7 @@ export const TrainingList = () => (
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />
-      <TextField source="description" />
-      <TextField source="dificulty" />
+      <TextField source="difficulty" />
       <ShowButton />
     </Datagrid>
   </List>
