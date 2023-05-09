@@ -14,9 +14,10 @@ import { LoginPage } from './login/loginPage';
 import { fetchUtils } from 'react-admin';
 import { AdminCreate } from './admins/admins';
 import { mainTheme } from './utilities/themes';
-import { API_URL } from '../config';
+import { API_USER_URL, API_TRAININGS_URL } from '../config';
 import { AdminShow } from './admins/admins';
 import { TrainingShow } from './trainings/trainings';
+import CompositeDataProvider from './compositeDataProvider';
 
 // All options are optional
 const options = {
@@ -42,7 +43,16 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider(API_URL, fetchJson);
+const dataProvider = new CompositeDataProvider([
+  {
+    dataProvider: jsonServerProvider(API_USER_URL, fetchJson),
+    resources: ['admins', 'users'],
+  },
+  {
+    dataProvider: jsonServerProvider(API_TRAININGS_URL, fetchJson),
+    resources: ['trainings'],
+  },
+]);
 
 const App = () => {
   return (
