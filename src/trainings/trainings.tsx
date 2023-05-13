@@ -10,7 +10,7 @@ import {
 import { PostPagination } from '../utilities/pagination';
 
 const postFilters = [
-  <TextInput label="Title" source="title" key="id" alwaysOn />,
+  <TextInput label="Type" source="type" key="id" alwaysOn />,
   <TextInput label="Difficulty" key="id" source="difficulty" />,
 ];
 
