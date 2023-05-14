@@ -1,9 +1,9 @@
 import { Admin, Resource } from 'react-admin';
 import { Dashboard } from './dashboard/dashboard';
 import jsonServerProvider from 'ra-data-json-server';
-import { UserList } from './users/users';
+import { UserList, UserShow } from './users/users';
 import { AdminList } from './admins/admins';
-import { TrainingList } from './trainings/trainings';
+import { TrainingEdit, TrainingList } from './trainings/trainings';
 import { PageLayout } from './menuItems/layout';
 import UserIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -13,6 +13,7 @@ import { config } from './login/firebaseConfig';
 import { LoginPage } from './login/loginPage';
 import { fetchUtils } from 'react-admin';
 import { AdminCreate } from './admins/admins';
+import { UserEdit } from './users/users';
 import { mainTheme } from './utilities/themes';
 import { API_USER_URL, API_TRAININGS_URL } from '../config';
 import { AdminShow } from './admins/admins';
@@ -71,12 +72,13 @@ const App = () => {
         create={AdminCreate}
         show={AdminShow}
       />
-      <Resource name="users" list={UserList} icon={UserIcon} />
+      <Resource name="users" list={UserList} icon={UserIcon} edit={UserEdit} />
       <Resource
         name="trainings"
         list={TrainingList}
         icon={FitnessCenterIcon}
         show={TrainingShow}
+        edit={TrainingEdit}
       />
     </Admin>
   );
