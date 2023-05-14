@@ -1,7 +1,7 @@
 import { Admin, Resource } from 'react-admin';
 import { Dashboard } from './dashboard/dashboard';
 import jsonServerProvider from 'ra-data-json-server';
-import { UserList } from './users/users';
+import { UserEdit, UserList } from './users/users';
 import { AdminList } from './admins/admins';
 import { TrainingList } from './trainings/trainings';
 import { PageLayout } from './menuItems/layout';
@@ -71,7 +71,7 @@ const App = () => {
         create={AdminCreate}
         show={AdminShow}
       />
-      <Resource name="users" list={UserList} icon={UserIcon} />
+      <Resource name="users" list={UserList} icon={UserIcon} hasEdit edit={UserEdit} />
       <Resource
         name="trainings"
         list={TrainingList}
