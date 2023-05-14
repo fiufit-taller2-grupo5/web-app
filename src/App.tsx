@@ -3,7 +3,7 @@ import { Dashboard } from './dashboard/dashboard';
 import jsonServerProvider from 'ra-data-json-server';
 import { UserEdit, UserList } from './users/users';
 import { AdminList } from './admins/admins';
-import { TrainingList } from './trainings/trainings';
+import { TrainingEdit, TrainingList } from './trainings/trainings';
 import { PageLayout } from './menuItems/layout';
 import UserIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -40,6 +40,7 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
   );
   console.log(token.stsTokenManager.accessToken);
   options.headers = customHeaders;
+  console.log("front headers", options.headers);
   return fetchUtils.fetchJson(url, options);
 };
 
@@ -71,12 +72,13 @@ const App = () => {
         create={AdminCreate}
         show={AdminShow}
       />
-      <Resource name="users" list={UserList} icon={UserIcon} hasEdit edit={UserEdit} />
+      <Resource name="users" list={UserList} icon={UserIcon} edit={UserEdit} />
       <Resource
         name="trainings"
         list={TrainingList}
         icon={FitnessCenterIcon}
         show={TrainingShow}
+        edit={TrainingEdit}
       />
     </Admin>
   );

@@ -1,8 +1,12 @@
 import {
   Datagrid,
+  Edit,
+  EditButton,
   List,
+  SelectInput,
   Show,
   ShowButton,
+  SimpleForm,
   SimpleShowLayout,
   TextField,
   TextInput,
@@ -13,6 +17,17 @@ const postFilters = [
   <TextInput label="Type" source="type" key="id" alwaysOn />,
   <TextInput label="Difficulty" key="id" source="difficulty" />,
 ];
+
+export const TrainingEdit = () => (
+  <Edit>
+  <SimpleForm>
+      <SelectInput source="state" choices={[
+          { id: 'active', name: 'Active' },
+          { id: 'inactive', name: 'Inactive' },
+      ]} />
+  </SimpleForm>
+</Edit>
+);
 
 export const TrainingShow = () => (
   <Show>
@@ -32,6 +47,7 @@ export const TrainingList = () => (
       <TextField source="state" />
       <TextField source="difficulty" />
       <ShowButton />
+      <EditButton />
     </Datagrid>
   </List>
 );
