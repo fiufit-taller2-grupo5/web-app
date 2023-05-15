@@ -20,13 +20,13 @@ const postFilters = [
 
 export const TrainingEdit = () => (
   <Edit>
-  <SimpleForm>
+    <SimpleForm>
       <SelectInput source="state" choices={[
-          { id: 'active', name: 'Active' },
-          { id: 'blocked', name: 'Blocked' },
+        { id: 'active', name: 'Active' },
+        { id: 'blocked', name: 'Blocked' },
       ]} />
-  </SimpleForm>
-</Edit>
+    </SimpleForm>
+  </Edit>
 );
 
 export const TrainingShow = () => (
