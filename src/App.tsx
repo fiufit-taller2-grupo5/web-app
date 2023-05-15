@@ -15,7 +15,6 @@ import { fetchUtils } from 'react-admin';
 import { AdminCreate } from './admins/admins';
 import { mainTheme } from './utilities/themes';
 import { API_USER_URL, API_TRAININGS_URL } from '../config';
-import { AdminShow } from './admins/admins';
 import { TrainingShow } from './trainings/trainings';
 import CompositeDataProvider from './compositeDataProvider';
 
@@ -70,7 +69,6 @@ const App = () => {
         list={AdminList}
         icon={AdminPanelSettingsIcon}
         create={AdminCreate}
-        show={AdminShow}
       />
       <Resource name="users" list={UserList} icon={UserIcon} edit={UserEdit} />
       <Resource

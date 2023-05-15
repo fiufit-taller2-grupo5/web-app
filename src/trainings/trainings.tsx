@@ -23,7 +23,7 @@ export const TrainingEdit = () => (
   <SimpleForm>
       <SelectInput source="state" choices={[
           { id: 'active', name: 'Active' },
-          { id: 'inactive', name: 'Inactive' },
+          { id: 'blocked', name: 'Blocked' },
       ]} />
   </SimpleForm>
 </Edit>

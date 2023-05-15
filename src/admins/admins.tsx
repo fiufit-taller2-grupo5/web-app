@@ -7,14 +7,11 @@ import {
   EmailField,
   List,
   TextField,
-  SimpleShowLayout,
-  Show,
   SaveButton,
   Toolbar,
   SaveButtonProps,
 } from 'react-admin';
 import { PostPagination } from '../utilities/pagination';
-import { ShowButton } from 'react-admin';
 import { InferProps, Requireable, ReactElementLike } from 'prop-types';
 
 const MySaveButton = (
@@ -635,14 +632,6 @@ const AdminCreateToolbar = () => (
   </Toolbar>
 );
 
-export const AdminShow = () => (
-  <Show>
-    <SimpleShowLayout>
-      <TextField source="name" />
-    </SimpleShowLayout>
-  </Show>
-);
-
 export const AdminCreate = () => (
   <Create
     sx={{
@@ -667,7 +656,6 @@ export const AdminList = () => (
     <Datagrid rowClick="edit">
       <EmailField source="email" />
       <TextField source="name" />
-      <ShowButton />
     </Datagrid>
   </List>
 );
