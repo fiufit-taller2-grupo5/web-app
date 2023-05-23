@@ -4,8 +4,8 @@ import { UsersCreatedDashboard } from './UsersCreatedDashboard';
 export const Dashboard = () => {
   return (
     <Card>
-      <CardHeader title="Bienvenido a FiuFit - Modo administrador" />
-      <CardContent>Toda la información se encuentra disponible</CardContent>
+      <CardHeader title="Welcome to FiuFit - Administrator mode" />
+      <CardContent> All information is available </CardContent>
       <UsersCreatedDashboard />
     </Card>
   );

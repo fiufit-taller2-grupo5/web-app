@@ -1,4 +1,5 @@
 import {
+  AutocompleteInput,
   Datagrid,
   Edit,
   EditButton,
@@ -12,11 +13,7 @@ import {
   TextInput,
 } from 'react-admin';
 import { PostPagination } from '../utilities/pagination';
-
-const postFilters = [
-  <TextInput label="Type" source="type" key="id" alwaysOn />,
-  <TextInput label="Difficulty" key="id" source="difficulty" />,
-];
+import { NumberInput } from 'react-admin';
 
 export const TrainingEdit = () => (
   <Edit>
@@ -39,11 +36,29 @@ export const TrainingShow = () => (
   </Show>
 );
 
+const postFilters = [
+  <TextInput source="name" />,
+  <SelectInput source="type" choices={[
+      { id: 'Running', name: 'Running' },
+      { id: 'Swimming', name: 'Swimming' },
+      { id: 'Biking', name: 'Biking' },
+      { id: 'Yoga', name: 'Yoga' },
+      { id: 'Basketball', name: 'Basketball' },
+      { id: 'Football', name: 'Football' },
+      { id: 'Walking', name: 'Walking' },
+      { id: 'Gymnastics', name: 'Gymnastics' },
+      { id: 'Dancing', name: 'Dancing' },
+      { id: 'Hiking', name: 'Hiking' },
+  ]} />,
+  <NumberInput label="Difficulty" source="difficulty" min="0" max="10" />,
+];
+
 export const TrainingList = () => (
   <List perPage={5} pagination={<PostPagination />} filters={postFilters}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="title" />
+      <TextField source="type" />
       <TextField source="state" />
       <TextField source="difficulty" />
       <ShowButton />
