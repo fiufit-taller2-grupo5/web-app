@@ -36,7 +36,7 @@ export const TrainingShow = () => (
   </Show>
 );
 
-const postFilters = [
+const trainingsFilters = [
   <TextInput source="name" />,
   <SelectInput source="type" choices={[
       { id: 'Running', name: 'Running' },
@@ -54,7 +54,7 @@ const postFilters = [
 ];
 
 export const TrainingList = () => (
-  <List perPage={5} pagination={<PostPagination />} filters={postFilters}>
+  <List perPage={5} pagination={<PostPagination />} filters={trainingsFilters}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="title" />
