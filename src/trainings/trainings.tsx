@@ -37,7 +37,7 @@ export const TrainingShow = () => (
 );
 
 const trainingsFilters = [
-  <TextInput source="name" />,
+  <TextInput source="title" />,
   <SelectInput source="type" choices={[
       { id: 'Running', name: 'Running' },
       { id: 'Swimming', name: 'Swimming' },
