@@ -5,20 +5,6 @@ interface ChartProps {
 }
 
 export const Chart = (props: ChartProps) => {
-  const chartConfigOld: LineConfig = {
-    data: props.chartData,
-    height: 400,
-    width: document.documentElement.clientWidth * 0.8,
-    xField: 'moment',
-    yField: 'value',
-    seriesField: 'metric',
-    point: {
-      size: 5,
-      shape: 'diamond',
-    },
-    smooth: true,
-  };
-
   const chartConfig = {
     data: props.chartData,
     xField: 'date',
