@@ -1,5 +1,5 @@
 import { Button, InputNumber, Select, Typography } from 'antd';
-import { Config } from './Dashboard';
+import { Config } from './dashboard';
 import { ReloadOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;

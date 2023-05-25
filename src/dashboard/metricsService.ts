@@ -1,4 +1,4 @@
-import { Config } from "./Dashboard";
+import { Config } from "./dashboard";
 import { httpGet } from "./http";
 
 const basePath = "https://system-metrics-service-nodeport-prod2-szwtomas.cloud.okteto.net";

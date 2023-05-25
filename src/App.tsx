@@ -16,7 +16,7 @@ import { mainTheme } from './utilities/themes';
 import { API_USER_URL, API_TRAININGS_URL } from '../config';
 import { TrainingShow } from './trainings/trainings';
 import CompositeDataProvider from './compositeDataProvider';
-import { Dashboard } from './dashboard/Dashboard';
+import { Dashboard } from './dashboard/dashboard';
 
 // All options are optional
 const options = {
