@@ -18,10 +18,13 @@ import { NumberInput } from 'react-admin';
 export const TrainingEdit = () => (
   <Edit>
     <SimpleForm>
-      <SelectInput source="state" choices={[
-        { id: 'active', name: 'Active' },
-        { id: 'blocked', name: 'Blocked' },
-      ]} />
+      <SelectInput
+        source="state"
+        choices={[
+          { id: 'active', name: 'Active' },
+          { id: 'blocked', name: 'Blocked' },
+        ]}
+      />
     </SimpleForm>
   </Edit>
 );
@@ -38,7 +41,9 @@ export const TrainingShow = () => (
 
 const trainingsFilters = [
   <TextInput source="title" />,
-  <SelectInput source="type" choices={[
+  <SelectInput
+    source="type"
+    choices={[
       { id: 'Running', name: 'Running' },
       { id: 'Swimming', name: 'Swimming' },
       { id: 'Biking', name: 'Biking' },
@@ -49,7 +54,8 @@ const trainingsFilters = [
       { id: 'Gymnastics', name: 'Gymnastics' },
       { id: 'Dancing', name: 'Dancing' },
       { id: 'Hiking', name: 'Hiking' },
-  ]} />,
+    ]}
+  />,
   <NumberInput label="Difficulty" source="difficulty" min="0" max="10" />,
 ];
 

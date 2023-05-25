@@ -16,6 +16,7 @@ export const httpGet = async (baseUrl: string, queryParams: Record<string, strin
         const response = await fetch(url);
         if (response.ok) {
             const responseJson = await response.json();
+            console.log("Got response!")
             console.log(responseJson);
             return responseJson;    
         } else {

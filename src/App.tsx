@@ -1,5 +1,4 @@
 import { Admin, Resource } from 'react-admin';
-// import { Dashboard } from './dashboard/dashboard';
 import jsonServerProvider from 'ra-data-json-server';
 import { UserEdit, UserList } from './users/users';
 import { AdminList } from './admins/admins';
@@ -17,6 +16,7 @@ import { mainTheme } from './utilities/themes';
 import { API_USER_URL, API_TRAININGS_URL } from '../config';
 import { TrainingShow } from './trainings/trainings';
 import CompositeDataProvider from './compositeDataProvider';
+import { Dashboard } from './dashboard/Dashboard';
 
 // All options are optional
 const options = {
@@ -61,7 +61,7 @@ const App = () => {
       dataProvider={dataProvider}
       loginPage={LoginPage}
       layout={PageLayout}
-      // dashboard={Dashboard}
+      dashboard={Dashboard}
       theme={mainTheme}
     >
       <Resource

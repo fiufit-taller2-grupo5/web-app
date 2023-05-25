@@ -2,6 +2,7 @@ import { Config } from "./Dashboard";
 import { httpGet } from "./http";
 
 const basePath = "https://system-metrics-service-nodeport-prod2-szwtomas.cloud.okteto.net";
+const localHostBasePath = "http://localhost:8006";
 
 function subtractTimePeriod(interval: 'minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years', amount: number): Date {
   const currentDate = new Date();
