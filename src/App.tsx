@@ -37,9 +37,7 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
     'Authorization',
     `Bearer ${token.stsTokenManager.accessToken}`
   );
-  console.log(token.stsTokenManager.accessToken);
   options.headers = customHeaders;
-  console.log('front headers', options.headers);
   return fetchUtils.fetchJson(url, options);
 };
 

@@ -75,10 +75,7 @@ export const fetchChartData = async (config: Config, metric: string): Promise<an
     }
 
     const apiResponse = await httpGet(`${basePath}/api/metrics`, queryParams);
-    console.log(apiResponse);
-
-    return apiResponse.map((point: DataPointsApiResponse) => {
-        // return { date: transformDateFormat(point.start), count: point.count }  
+    return apiResponse.map((point: DataPointsApiResponse) => {  
         return { date: new Date(point.start), count: point.count}
     });
 }

@@ -38,13 +38,11 @@ export const Dashboard = () => {
       const data = await fetchChartData(config, metric);
       setChartData(data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }, [config]);
 
-  const handleReload = React.useCallback(() => {
-    console.log('Clicked reload');
-  }, [metric]);
+  const handleReload = React.useCallback(() => {}, [metric]);
 
   React.useEffect(() => {
     updateChartData();
