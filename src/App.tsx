@@ -1,5 +1,5 @@
 import { Admin, Resource } from 'react-admin';
-import { Dashboard } from './dashboard/dashboard';
+// import { Dashboard } from './dashboard/dashboard';
 import jsonServerProvider from 'ra-data-json-server';
 import { UserEdit, UserList } from './users/users';
 import { AdminList } from './admins/admins';
@@ -39,7 +39,7 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
   );
   console.log(token.stsTokenManager.accessToken);
   options.headers = customHeaders;
-  console.log("front headers", options.headers);
+  console.log('front headers', options.headers);
   return fetchUtils.fetchJson(url, options);
 };
 
@@ -61,7 +61,7 @@ const App = () => {
       dataProvider={dataProvider}
       loginPage={LoginPage}
       layout={PageLayout}
-      dashboard={Dashboard}
+      // dashboard={Dashboard}
       theme={mainTheme}
     >
       <Resource

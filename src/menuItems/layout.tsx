@@ -24,6 +24,7 @@ const MenuAux = () => (
     <Menu.ResourceItem name="admins" />
     <Menu.ResourceItem name="users" />
     <Menu.ResourceItem name="trainings" />
+    <Menu.ResourceItem name="metrics" />
   </Menu>
 );
 
