@@ -24,7 +24,7 @@ export interface Config {
   groupBy?: 'hours' | 'minutes' | 'days' | 'weeks' | 'months' | 'years';
 }
 
-export const Dashboard = () => {
+export const Dashboard: React.FC = () => {
   const [chartData, setChartData] = React.useState<any[]>([]);
   const [metric, setMetric] = React.useState('');
   const [config, setconfig] = React.useState<Config>({
