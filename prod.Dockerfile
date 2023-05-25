@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 80
 
 # Start the development server with NODE_ENV=production
-CMD ["sh", "-c", "NODE_ENV=production npm run prod"]
+CMD ["sh", "-c", "NODE_ENV=production vite --port 80"]
