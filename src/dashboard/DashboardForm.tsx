@@ -39,8 +39,8 @@ export const DashboardForm = (props: MetricsFormProps) => {
           marginRight: 25,
           width: 230,
           fontWeight: 600,
-          backgroundColor: '#444766',
-          color: 'white',
+          backgroundColor: 'white',
+          color: 'black',
         }}
         onChange={props.setMetric}
       >
@@ -66,8 +66,8 @@ export const DashboardForm = (props: MetricsFormProps) => {
           height: 32,
           marginRight: 5,
           fontWeight: 600,
-          backgroundColor: '#444766',
-          color: 'white',
+          backgroundColor: 'white',
+          color: 'black',
         }}
         value={props.config.timeFrameCount}
         min={1}
@@ -81,8 +81,8 @@ export const DashboardForm = (props: MetricsFormProps) => {
           marginRight: 25,
           width: 100,
           fontWeight: 600,
-          backgroundColor: '#444766',
-          color: 'white',
+          backgroundColor: 'white',
+          color: 'black',
         }}
         value={props.config.timeFrameInterval}
         onChange={(value) => {
