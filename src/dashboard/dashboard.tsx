@@ -24,9 +24,13 @@ export interface Config {
   groupBy?: 'hours' | 'minutes' | 'days' | 'weeks' | 'months' | 'years';
 }
 
-export const Dashboard: React.FC = () => {
+export interface DashboardProps {
+  metricNameLabel: string;
+  metricNameSystem: string;
+}
+
+export const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
   const [chartData, setChartData] = React.useState<any[]>([]);
-  const [metric, setMetric] = React.useState('');
   const [config, setconfig] = React.useState<Config>({
     timeFrameInterval: 'hours',
     timeFrameCount: 1,
@@ -35,14 +39,14 @@ export const Dashboard: React.FC = () => {
 
   const updateChartData = React.useCallback(async () => {
     try {
-      const data = await fetchChartData(config, metric);
+      const data = await fetchChartData(config, props.metricNameSystem);
       setChartData(data);
     } catch (err) {
       console.error(err);
     }
   }, [config]);
 
-  const handleReload = React.useCallback(() => {}, [metric]);
+  const handleReload = React.useCallback(() => {}, []);
 
   React.useEffect(() => {
     updateChartData();
@@ -63,7 +67,7 @@ export const Dashboard: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <DashboardForm
-          setMetric={setMetric}
+          metricName={props.metricNameLabel}
           setConfig={setconfig}
           config={config}
           metrics={metrics}

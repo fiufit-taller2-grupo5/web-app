@@ -16,7 +16,7 @@ import { mainTheme } from './utilities/themes';
 import { API_USER_URL, API_TRAININGS_URL } from '../config';
 import { TrainingShow } from './trainings/trainings';
 import CompositeDataProvider from './compositeDataProvider';
-import { Dashboard } from './dashboard/dashboard';
+import { Dashboards } from './dashboard/dashboards';
 
 // All options are optional
 const options = {
@@ -59,7 +59,7 @@ const App = () => {
       dataProvider={dataProvider}
       loginPage={LoginPage}
       layout={PageLayout}
-      dashboard={Dashboard}
+      dashboard={Dashboards}
       theme={mainTheme}
     >
       <Resource
