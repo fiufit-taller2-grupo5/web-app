@@ -1,38 +1,45 @@
 import { Button, InputNumber, Select, Typography } from 'antd';
 import { Config } from './dashboard';
 import { ReloadOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 
 const { Text } = Typography;
 
 export interface MetricsFormProps {
   setConfig: (config: Config) => void;
   config: Config;
-  metrics: { key: string; name: string }[];
-  handleReload: () => void;
   metricName: string;
 }
 
 export const DashboardForm = (props: MetricsFormProps) => {
+  const [timeFrameCountValue, setTimeFrameCountValue] = useState<number>(
+    props.config.timeFrameCount
+  );
+
+  const [timeFrameIntervalValue, setTimeFrameIntervalValue] = useState<string>(
+    props.config.timeFrameInterval
+  );
+
+  const [groupByValue, setGroupByValue] = useState<string>(
+    props.config.groupBy || 'minutes'
+  );
+
   return (
     <div>
-      <h3
-        style={{
-          fontSize: 22,
-        }}
-      >
-        {props.metricName}
-      </h3>
       <div
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          width: '1100px',
+          marginTop: '15px',
+          marginBottom: '15px',
         }}
       >
         <Text
           style={{
             marginRight: 10,
-            color: 'white',
+            color: 'black',
             fontWeight: 'bold',
             fontSize: 15,
           }}
@@ -41,20 +48,17 @@ export const DashboardForm = (props: MetricsFormProps) => {
         </Text>
         <InputNumber
           style={{
-            width: 130,
+            width: 65,
             height: 32,
             marginRight: 5,
             fontWeight: 600,
             backgroundColor: 'white',
             color: 'black',
           }}
-          value={props.config.timeFrameCount}
+          value={timeFrameCountValue}
           min={1}
           onChange={(value) => {
-            props.setConfig({
-              ...props.config,
-              timeFrameCount: value as number,
-            });
+            setTimeFrameCountValue(value || 1);
           }}
         />
         <Select
@@ -66,9 +70,9 @@ export const DashboardForm = (props: MetricsFormProps) => {
             backgroundColor: 'white',
             color: 'black',
           }}
-          value={props.config.timeFrameInterval}
+          value={timeFrameIntervalValue}
           onChange={(value) => {
-            props.setConfig({ ...props.config, timeFrameInterval: value });
+            setTimeFrameIntervalValue(value || 'minutes');
           }}
         >
           <Select.Option value="minutes">Minutes</Select.Option>
@@ -82,7 +86,7 @@ export const DashboardForm = (props: MetricsFormProps) => {
         <Text
           style={{
             marginRight: 10,
-            color: 'white',
+            color: 'black',
             fontWeight: 'bold',
             fontSize: 15,
           }}
@@ -90,11 +94,11 @@ export const DashboardForm = (props: MetricsFormProps) => {
           Interval
         </Text>
         <Select
-          value={props.config.groupBy}
+          value={groupByValue}
           style={{ marginRight: 25, width: 120 }}
           placeholder="Select a time interval to group by"
           onChange={(value) => {
-            props.setConfig({ ...props.config, groupBy: value });
+            setGroupByValue(value || 'minutes');
           }}
         >
           <Select.Option value="minutes">Minutes</Select.Option>
@@ -109,7 +113,25 @@ export const DashboardForm = (props: MetricsFormProps) => {
           size="large"
           shape="circle"
           icon={<ReloadOutlined />}
-          onClick={props.handleReload}
+          onClick={() => {
+            props.setConfig({
+              timeFrameCount: timeFrameCountValue,
+              timeFrameInterval: timeFrameIntervalValue as
+                | 'hours'
+                | 'minutes'
+                | 'days'
+                | 'weeks'
+                | 'months'
+                | 'years',
+              groupBy: groupByValue as
+                | 'hours'
+                | 'minutes'
+                | 'days'
+                | 'weeks'
+                | 'months'
+                | 'years',
+            });
+          }}
         />
       </div>
     </div>

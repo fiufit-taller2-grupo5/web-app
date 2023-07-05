@@ -1,9 +1,9 @@
 import React from 'react';
 import { message } from 'antd';
 import { Chart } from './Chart';
-import { DashboardForm } from './DashboardForm';
 import './styles.css';
 import { fetchChartData } from './metricsService';
+import { Metric } from './dashboards';
 
 message.config({
   top: 50,
@@ -25,28 +25,20 @@ export interface Config {
 }
 
 export interface DashboardProps {
-  metricNameLabel: string;
-  metricNameSystem: string;
+  metric: Metric;
+  config: Config;
 }
 
 export const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
   const [chartData, setChartData] = React.useState<any[]>([]);
-  const [config, setconfig] = React.useState<Config>({
-    timeFrameInterval: 'minutes',
-    timeFrameCount: 20,
-    groupBy: 'minutes',
-  });
-
   const updateChartData = React.useCallback(async () => {
     try {
-      const data = await fetchChartData(config, props.metricNameSystem);
+      const data = await fetchChartData(props.config, props.metric.name);
       setChartData(data);
     } catch (err) {
       console.error(err);
     }
-  }, [config]);
-
-  const handleReload = React.useCallback(() => {}, []);
+  }, [props.config]);
 
   React.useEffect(() => {
     updateChartData();
@@ -55,23 +47,11 @@ export const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
   // update metrics if config changes
   React.useEffect(() => {
     updateChartData();
-  }, [config, updateChartData]);
-
-  const metrics = [
-    { key: 'user_created', name: 'Users Created' },
-    { key: 'training_created', name: 'Trainings Created' },
-    { key: 'training_completed', name: 'Trainings Completed' },
-  ];
+  }, [props.config, updateChartData]);
 
   return (
     <div className="App">
-      <DashboardForm
-        metricName={props.metricNameLabel}
-        setConfig={setconfig}
-        config={config}
-        metrics={metrics}
-        handleReload={handleReload}
-      />
+      <h3>{props.metric.label}</h3>
       <Chart chartData={chartData} />
     </div>
   );
