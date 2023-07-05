@@ -32,8 +32,8 @@ export interface DashboardProps {
 export const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
   const [chartData, setChartData] = React.useState<any[]>([]);
   const [config, setconfig] = React.useState<Config>({
-    timeFrameInterval: 'hours',
-    timeFrameCount: 1,
+    timeFrameInterval: 'minutes',
+    timeFrameCount: 20,
     groupBy: 'minutes',
   });
 
@@ -65,16 +65,14 @@ export const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <DashboardForm
-          metricName={props.metricNameLabel}
-          setConfig={setconfig}
-          config={config}
-          metrics={metrics}
-          handleReload={handleReload}
-        />
-        <Chart chartData={chartData} />
-      </header>
+      <DashboardForm
+        metricName={props.metricNameLabel}
+        setConfig={setconfig}
+        config={config}
+        metrics={metrics}
+        handleReload={handleReload}
+      />
+      <Chart chartData={chartData} />
     </div>
   );
 };

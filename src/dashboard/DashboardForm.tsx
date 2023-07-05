@@ -15,10 +15,15 @@ export interface MetricsFormProps {
 export const DashboardForm = (props: MetricsFormProps) => {
   return (
     <div>
-      <h3>{props.metricName}</h3>
+      <h3
+        style={{
+          fontSize: 22,
+        }}
+      >
+        {props.metricName}
+      </h3>
       <div
         style={{
-          height: 50,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -36,7 +41,7 @@ export const DashboardForm = (props: MetricsFormProps) => {
         </Text>
         <InputNumber
           style={{
-            width: 50,
+            width: 130,
             height: 32,
             marginRight: 5,
             fontWeight: 600,

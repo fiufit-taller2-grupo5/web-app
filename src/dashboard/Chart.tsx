@@ -19,7 +19,7 @@ export const Chart = (props: ChartProps) => {
   };
 
   return (
-    <div style={{ marginTop: 20 }}>
+    <div>
       <Line {...chartConfig} />
     </div>
   );
